@@ -1,0 +1,36 @@
+# One command to run everything:  docker compose up --build
+# Then load demo data:            docker compose exec backend node src/seed/index.js --reset
+# Open http://localhost:8080
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    depends_on: [mongo]
+    environment:
+      MONGO_URI: mongodb://mongo:27017/mhc_afms
+      JWT_SECRET: ${JWT_SECRET:-please-change-this-secret-in-production}
+      JWT_EXPIRES_IN: 7d
+      PORT: 5050
+      CLIENT_URL: http://localhost:8080
+      # Optional real email:
+      # SMTP_HOST: smtp.example.com
+      # SMTP_PORT: 587
+      # SMTP_USER: user
+      # SMTP_PASS: pass
+      # MAIL_FROM: MindCare <no-reply@example.com>
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    depends_on: [backend]
+    ports:
+      - "8080:80"
+
+volumes:
+  mongo-data:
