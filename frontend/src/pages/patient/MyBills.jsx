@@ -17,10 +17,10 @@ export default function MyBills() {
   return (
     <>
       <PageHeader title="My bills" subtitle="Invoices for your visits and tests" />
-      <div className="mb-6 grid gap-4 sm:grid-cols-3">
+      <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
         <StatCard icon={Wallet} label="Amount due" value={money(dueTotal)} hint={`${unpaid.length} unpaid`} tone="amber" />
         <StatCard icon={CheckCircle2} label="Total paid" value={money(paidTotal)} tone="emerald" />
-        <StatCard icon={Receipt} label="Saved with follow-up discount" value={money(saved)} tone="violet" />
+        <StatCard icon={Receipt} label="Saved with follow-up discount" value={money(saved)} tone="blue" />
       </div>
 
       <Card>

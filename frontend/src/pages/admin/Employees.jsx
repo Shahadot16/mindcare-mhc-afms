@@ -6,7 +6,7 @@ import useFetch from '@/hooks/useFetch';
 import { Avatar, Badge, Button, Card, ConfirmDialog, EmptyState, ErrorBox, Input, Modal, PageHeader, PageLoader, Select, StatusBadge, Tabs, cx } from '@/components/ui';
 import { DAYS, fmtHour, money } from '@/utils/format';
 
-const roleTone = { Admin: 'violet', Doctor: 'brand', Staff: 'sky', Patient: 'slate' };
+const roleTone = { Admin: 'blue', Doctor: 'brand', Staff: 'sky', Patient: 'slate' };
 const emptyForm = { fullName: '', email: '', password: '', role: 'Doctor', specialization: '', consultationFee: '', contactNumber: '', gender: '', salary: '', commissionRate: '' };
 
 export default function Employees() {

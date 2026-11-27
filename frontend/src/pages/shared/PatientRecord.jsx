@@ -43,11 +43,11 @@ export default function PatientRecord() {
       <Button variant="ghost" icon={ArrowLeft} onClick={() => navigate(-1)} className="mb-4">Back</Button>
 
       <Card className="mb-6 overflow-hidden">
-        <div className="h-20 bg-linear-to-r from-brand-600 to-indigo-600" />
+        <div className="h-20 bg-brand-700" />
         <div className="flex flex-col gap-4 px-6 pb-6 sm:flex-row sm:items-end">
           <Avatar name={p.fullName} size="xl" className="-mt-10 ring-4 ring-white" />
           <div className="flex-1">
-            <h1 className="text-2xl font-extrabold">{p.fullName}</h1>
+            <h1 className="text-2xl font-bold">{p.fullName}</h1>
             <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-slate-500">
               {(p.age || p.gender) && <span>{[p.age && `${p.age} years`, p.gender].filter(Boolean).join(' · ')}</span>}
               {p.contactNumber && <span className="flex items-center gap-1"><Phone className="size-3.5" />{p.contactNumber}</span>}
@@ -71,10 +71,10 @@ export default function PatientRecord() {
         </div>
       )}
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard icon={Stethoscope} label="Completed visits" value={s.visits} hint={s.firstVisit ? `Since ${fmtDate(s.firstVisit, { month: 'short', year: 'numeric' })}` : 'No visits yet'} tone="brand" />
-        <StatCard icon={Brain} label="Latest PHQ-9" value={s.latestPHQ9 ? `${s.latestPHQ9.score} / 27` : '—'} hint={s.latestPHQ9?.severity} tone="indigo" />
-        <StatCard icon={Wind} label="Latest GAD-7" value={s.latestGAD7 ? `${s.latestGAD7.score} / 21` : '—'} hint={s.latestGAD7?.severity} tone="violet" />
+        <StatCard icon={Brain} label="Latest PHQ-9" value={s.latestPHQ9 ? `${s.latestPHQ9.score} / 27` : '—'} hint={s.latestPHQ9?.severity} tone="sky" />
+        <StatCard icon={Wind} label="Latest GAD-7" value={s.latestGAD7 ? `${s.latestGAD7.score} / 21` : '—'} hint={s.latestGAD7?.severity} tone="blue" />
         <StatCard icon={Smile} label="Avg mood (60 days)" value={s.avgMood ? `${s.avgMood} / 5` : '—'} hint={`${data.moods.length} check-ins`} tone="emerald" />
       </div>
 
@@ -93,7 +93,7 @@ export default function PatientRecord() {
                 <XAxis dataKey="date" tickFormatter={(d) => fmtDate(d, { day: 'numeric', month: 'short' })} tick={{ fontSize: 12, fill: '#64748b' }} axisLine={false} tickLine={false} minTickGap={28} />
                 <YAxis domain={[1, 5]} ticks={[1, 2, 3, 4, 5]} tickFormatter={(v) => MOODS[v - 1].emoji} axisLine={false} tickLine={false} width={40} />
                 <Tooltip formatter={(v) => [`${MOODS[v - 1].emoji} ${MOODS[v - 1].label}`, 'Mood']} labelFormatter={(d) => fmtDate(d)} />
-                <Area type="monotone" dataKey="mood" stroke="#0a8577" strokeWidth={2} fill="#0a857722" connectNulls dot={{ r: 2.5, fill: '#0a8577', strokeWidth: 0 }} isAnimationActive={false} />
+                <Area type="monotone" dataKey="mood" stroke="#0d7480" strokeWidth={2} fill="#0d748022" connectNulls dot={{ r: 2.5, fill: '#0d7480', strokeWidth: 0 }} isAnimationActive={false} />
               </AreaChart>
             </ResponsiveContainer>
           )}
@@ -116,7 +116,7 @@ export default function PatientRecord() {
                 {a.diagnosis && <p className="mt-2 text-sm"><b>Diagnosis:</b> {a.diagnosis}</p>}
                 {a.prescription && <p className="mt-1 line-clamp-2 whitespace-pre-line text-sm text-slate-600">{a.prescription}</p>}
                 {a.tests?.length > 0 && <div className="mt-2 flex flex-wrap gap-1.5">{a.tests.map((t) => (
-                  <span key={t._id} className={`rounded-lg px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${t.status === 'Completed' ? 'bg-emerald-50 text-emerald-700 ring-emerald-200' : 'bg-violet-50 text-violet-700 ring-violet-200'}`}>
+                  <span key={t._id} className={`rounded-lg px-2 py-0.5 text-xs font-medium ring-1 ring-inset ${t.status === 'Completed' ? 'bg-emerald-50 text-emerald-700 ring-emerald-200' : 'bg-blue-50 text-blue-700 ring-blue-200'}`}>
                     {t.testName}{t.result ? `: ${t.result}` : ''}
                   </span>
                 ))}</div>}

@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# taste-skill working files (deal history, gate state, screenshots)
+.taste-skill
+shots

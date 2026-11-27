@@ -170,7 +170,7 @@ export default function Messages() {
             </div>
             <div className="flex-1 space-y-2 overflow-y-auto bg-slate-50/60 px-4 py-4">
               {loadingMsgs ? <div className="grid h-full place-items-center"><Spinner /></div> : grouped.length === 0 ? (
-                <p className="grid h-full place-items-center text-sm text-slate-500">Say hello 👋</p>
+                <p className="grid h-full place-items-center text-sm text-slate-500">Say hello to start the conversation</p>
               ) : grouped.map((m) => m.divider ? (
                 <div key={m.key} className="py-2 text-center"><span className="rounded-full bg-white px-3 py-1 text-[11px] font-semibold text-slate-500 shadow-sm">{m.divider}</span></div>
               ) : (

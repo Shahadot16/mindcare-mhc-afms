@@ -16,7 +16,7 @@ createRoot(document.getElementById('root')).render(
         </RealtimeProvider>
         <Toaster position="top-right" toastOptions={{
           style: { borderRadius: '14px', fontSize: '14px', padding: '10px 14px' },
-          success: { iconTheme: { primary: '#0a8577', secondary: '#fff' } },
+          success: { iconTheme: { primary: '#0d7480', secondary: '#fff' } },
         }} />
       </AuthProvider>
     </BrowserRouter>

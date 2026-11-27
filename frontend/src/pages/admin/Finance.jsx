@@ -6,8 +6,8 @@ import { Button, Card, CardHeader, EmptyState, ErrorBox, PageHeader, PageLoader,
 import { addDaysStr, fmtDate, money, todayStr } from '@/utils/format';
 
 // Chart colors (validated: distinct for colour-blind readers; values are always also shown as text)
-const C_CONSULT = '#0a8577'; // brand-600
-const C_TESTS = '#6366f1'; // indigo-500
+const C_CONSULT = '#0d7480'; // brand-600
+const C_TESTS = '#4a8fc2'; // calm blue, second series
 
 const presets = [
   { label: 'Last 7 days', days: 6 },
@@ -63,11 +63,11 @@ function Report({ data }) {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard icon={TrendingUp} label="Revenue in range" value={money(s.revenueInRange)} hint={`${s.paidInvoices} paid invoice${s.paidInvoices === 1 ? '' : 's'}`} tone="brand" />
-        <StatCard icon={CalendarDays} label="Today" value={money(s.revenueToday)} hint={`This month ${money(s.revenueThisMonth)}`} tone="indigo" />
+        <StatCard icon={CalendarDays} label="Today" value={money(s.revenueToday)} hint={`This month ${money(s.revenueThisMonth)}`} tone="sky" />
         <StatCard icon={AlertCircle} label="Outstanding" value={money(s.outstandingAmount)} hint={`${s.outstandingInvoices} unpaid invoice${s.outstandingInvoices === 1 ? '' : 's'}`} tone="amber" />
-        <StatCard icon={BadgePercent} label="Follow-up discounts" value={money(s.discountsGiven)} hint={`${s.appointmentsInRange} appointments in range`} tone="violet" />
+        <StatCard icon={BadgePercent} label="Follow-up discounts" value={money(s.discountsGiven)} hint={`${s.appointmentsInRange} appointments in range`} tone="blue" />
       </div>
 
       <Card>

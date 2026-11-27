@@ -45,9 +45,9 @@ export default function Payroll() {
       {error ? <ErrorBox message={error} onRetry={reload} /> : loading || !data ? <PageLoader /> : (
         <div className="grid gap-6 xl:grid-cols-[1fr_320px]">
           <div className="space-y-6">
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
               <StatCard icon={Banknote} label={`Total for ${monthLabel(month)}`} value={money(data.total)} tone="brand" />
-              <StatCard icon={Calculator} label="Doctor commission" value={money(commissionTotal)} hint="Included in total" tone="indigo" />
+              <StatCard icon={Calculator} label="Doctor commission" value={money(commissionTotal)} hint="Included in total" tone="sky" />
               <StatCard icon={Users} label="Employees" value={data.entries.length} tone="sky" />
             </div>
             <Card>
@@ -76,7 +76,7 @@ export default function Payroll() {
                         </tr>
                       ))}
                     </tbody>
-                    <tfoot><tr><td className="px-4 py-3 font-bold">Total</td><td colSpan={3} /><td className="px-4 py-3 text-right font-display text-lg font-extrabold tabular-nums">{money(data.total)}</td></tr></tfoot>
+                    <tfoot><tr><td className="px-4 py-3 font-bold">Total</td><td colSpan={3} /><td className="px-4 py-3 text-right font-display text-lg font-bold tabular-nums">{money(data.total)}</td></tr></tfoot>
                   </table>
                 </div>
               )}

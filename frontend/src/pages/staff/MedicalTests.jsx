@@ -49,13 +49,13 @@ export default function MedicalTests() {
           {data.map((t) => (
             <Card key={t._id} className={`flex flex-col p-5 ${t.isActive ? '' : 'opacity-60'}`}>
               <div className="flex items-start justify-between gap-3">
-                <span className="grid size-11 place-items-center rounded-xl bg-violet-50 text-violet-600"><FlaskConical className="size-5" /></span>
+                <span className="grid size-11 place-items-center rounded-xl bg-blue-50 text-blue-600"><FlaskConical className="size-5" /></span>
                 <StatusBadge status={t.isActive ? 'Active' : 'Inactive'} />
               </div>
               <h3 className="mt-4 font-bold">{t.testName}</h3>
               <p className="mt-1 flex-1 text-sm text-slate-500">{t.description || 'No description'}</p>
               <div className="mt-4 flex items-center justify-between">
-                <p className="font-display text-xl font-extrabold">{money(t.price)}</p>
+                <p className="font-display text-xl font-bold">{money(t.price)}</p>
                 <div className="flex gap-1.5">
                   <Button size="sm" variant="secondary" icon={Pencil} onClick={() => open(t)}>Edit</Button>
                   <Button size="sm" variant={t.isActive ? 'dangerSoft' : 'soft'} icon={Power} onClick={() => toggle(t)} title={t.isActive ? 'Deactivate' : 'Activate'} />

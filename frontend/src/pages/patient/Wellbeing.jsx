@@ -8,7 +8,7 @@ import { Button, Card, CardHeader, ErrorBox, PageHeader, PageLoader, StatCard, T
 import { addDaysStr, fmtDate, todayStr } from '@/utils/format';
 import { MOODS } from '@/constants/mood';
 
-const C_MOOD = '#0a8577';
+const C_MOOD = '#0d7480';
 
 export default function Wellbeing() {
   const [range, setRange] = useState(30);
@@ -100,10 +100,10 @@ export default function Wellbeing() {
         </Card>
 
         <div className="space-y-6">
-          <div className="grid gap-4 sm:grid-cols-2 2xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 2xl:grid-cols-4">
             <StatCard icon={Smile} label="Average mood" value={stats.avgMood ? `${stats.avgMood} / 5` : '—'} tone="brand" />
             <StatCard icon={Flame} label="Check-in streak" value={`${stats.streak} day${stats.streak === 1 ? '' : 's'}`} tone="amber" />
-            <StatCard icon={Moon} label="Average sleep" value={stats.avgSleep ? `${stats.avgSleep} h` : '—'} tone="indigo" />
+            <StatCard icon={Moon} label="Average sleep" value={stats.avgSleep ? `${stats.avgSleep} h` : '—'} tone="sky" />
             <StatCard icon={TrendingUp} label="Trend" value={stats.trend > 0.25 ? 'Improving' : stats.trend < -0.25 ? 'Dipping' : 'Steady'} hint={`${stats.logged} days logged`} tone={stats.trend < -0.25 ? 'rose' : 'emerald'} />
           </div>
 

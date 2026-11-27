@@ -56,7 +56,7 @@ function Unbilled() {
                 </li>
               ))}
             </ul>
-            <div className="mt-3 flex justify-between border-t border-slate-100 pt-3 font-display text-lg font-extrabold"><span>Total</span><span>{money(p.amount)}</span></div>
+            <div className="mt-3 flex justify-between border-t border-slate-100 pt-3 font-display text-lg font-bold"><span>Total</span><span>{money(p.amount)}</span></div>
             {p.pendingTests > 0 && (
               <p className="mt-3 flex items-start gap-2 rounded-xl bg-amber-50 px-3 py-2 text-xs text-amber-800">
                 <Clock4 className="mt-0.5 size-3.5 shrink-0" />

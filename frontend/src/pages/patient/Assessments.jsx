@@ -55,7 +55,7 @@ export default function Assessments() {
           return (
             <Card key={t.type} className="flex flex-col p-6">
               <div className="flex items-start gap-4">
-                <span className="grid size-12 place-items-center rounded-2xl bg-linear-to-br from-indigo-500 to-brand-500 text-white shadow-lg shadow-indigo-500/20"><Icon className="size-6" /></span>
+                <span className="grid size-12 place-items-center rounded-2xl bg-brand-50 text-brand-700 ring-1 ring-inset ring-brand-100"><Icon className="size-6" /></span>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold">{t.name}</h3>
                   <p className="text-sm text-slate-500">{t.questions.length} questions · about the last 2 weeks</p>
@@ -63,7 +63,7 @@ export default function Assessments() {
               </div>
               {l ? (
                 <div className="mt-5 flex items-center justify-between rounded-2xl bg-slate-50 p-4">
-                  <div><p className="text-xs text-slate-500">Last result · {fmtDate(l.createdAt)}</p><p className="font-display text-2xl font-extrabold">{l.score}<span className="text-sm font-medium text-slate-400"> / {t.max}</span></p></div>
+                  <div><p className="text-xs text-slate-500">Last result · {fmtDate(l.createdAt)}</p><p className="font-display text-2xl font-bold">{l.score}<span className="text-sm font-medium text-slate-400"> / {t.max}</span></p></div>
                   <Badge tone={severityTone(l.severity)}>{l.severity}</Badge>
                 </div>
               ) : <p className="mt-5 rounded-2xl bg-slate-50 p-4 text-sm text-slate-500">You haven't taken this one yet.</p>}
@@ -109,7 +109,7 @@ export default function Assessments() {
         )}
         {result && (
           <div className="text-center">
-            <p className="font-display text-6xl font-extrabold text-slate-900">{result.score}<span className="text-2xl text-slate-400"> / {taking.max}</span></p>
+            <p className="font-display text-6xl font-bold text-slate-900">{result.score}<span className="text-2xl text-slate-400"> / {taking.max}</span></p>
             <Badge tone={severityTone(result.severity)} className="mt-3 text-sm">{result.severity}</Badge>
             {result.riskFlag ? (
               <div className="mt-6 rounded-2xl border border-rose-200 bg-rose-50 p-5 text-left text-sm text-rose-900">

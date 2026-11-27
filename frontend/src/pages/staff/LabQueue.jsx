@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 import { TestTubes, CheckCircle2 } from 'lucide-react';
 import api, { errMsg } from '@/api/client';
 import useFetch from '@/hooks/useFetch';
-import { Avatar, Button, Card, EmptyState, ErrorBox, Input, Modal, PageHeader, PageLoader, StatusBadge, Tabs } from '@/components/ui';
+import { Avatar, Button, Card, EmptyState, ErrorBox, Input, Modal, PageHeader, Spinner, StatusBadge, Tabs } from '@/components/ui';
 import { fmtDate, money } from '@/utils/format';
 
 export default function LabQueue() {
@@ -31,7 +31,7 @@ export default function LabQueue() {
       </div>
       {error && <ErrorBox message={error} onRetry={reload} />}
       <Card>
-        {loading ? <PageLoader /> : data.length === 0 ? (
+        {loading ? <div className="grid place-items-center py-16"><Spinner /></div> : data.length === 0 ? (
           <EmptyState icon={TestTubes} title={tab === 'Accepted' ? 'Lab queue is empty' : 'No completed tests yet'} message="Tests show up here after a patient accepts a doctor's recommendation." />
         ) : (
           <div className="table-wrap">

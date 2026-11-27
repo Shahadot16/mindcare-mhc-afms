@@ -5,7 +5,7 @@ import { Card, CardHeader, ErrorBox, PageHeader, PageLoader, StatCard, StatusBad
 import { fmtDate, fmtHour } from '@/utils/format';
 
 // Sequential scale: one hue (brand teal), light to dark
-const STEPS = ['#f1f5f9', '#c9f6ec', '#94ecda', '#57dbc3', '#27c1a9', '#0fa691', '#0a8577', '#0d6a61'];
+const STEPS = ['#ecf0f2', '#d5f1f3', '#b0e3e8', '#7bced6', '#3fb0bd', '#1a94a2', '#0d7480', '#0b5f69'];
 const DAY_ORDER = [6, 0, 1, 2, 3, 4, 5]; // Sat first, like the Bangladeshi work week
 
 export default function Analytics() {
@@ -26,11 +26,11 @@ export default function Analytics() {
         action={<Tabs value={days} onChange={setDays} tabs={[{ value: 30, label: '30 days' }, { value: 60, label: '60 days' }, { value: 90, label: '90 days' }]} />} />
       {error ? <ErrorBox message={error} onRetry={reload} /> : loading || !data ? <PageLoader /> : (
         <div className="space-y-6">
-          <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-5">
             <StatCard icon={CalendarCheck} label="Appointments" value={data.kpis.appointments} hint={`${fmtDate(data.range.start, { day: 'numeric', month: 'short' })} – today`} tone="brand" />
             <StatCard icon={Percent} label="Completion rate" value={`${data.kpis.completionRate}%`} tone="emerald" />
             <StatCard icon={Activity} label="Cancellation rate" value={`${data.kpis.cancellationRate}%`} tone="rose" />
-            <StatCard icon={Users} label="Patients seen" value={data.kpis.uniquePatients} tone="indigo" />
+            <StatCard icon={Users} label="Patients seen" value={data.kpis.uniquePatients} tone="sky" />
             <StatCard icon={UserPlus} label="New sign-ups" value={data.kpis.newPatients} tone="sky" />
           </div>
 

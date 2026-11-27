@@ -56,7 +56,7 @@ export default function FindDoctors() {
                   <div className="min-w-0">
                     <h3 className="truncate text-base font-bold">{d.fullName}</h3>
                     <p className="text-sm font-medium text-brand-600">{d.specialization}</p>
-                    <p className="mt-1 font-display text-lg font-extrabold">{money(d.consultationFee)}<span className="text-xs font-medium text-slate-400"> / visit</span></p>
+                    <p className="mt-1 font-display text-lg font-bold">{money(d.consultationFee)}<span className="text-xs font-medium text-slate-400"> / visit</span></p>
                   </div>
                 </div>
                 {d.bio && <p className="mt-4 line-clamp-2 text-sm text-slate-600">{d.bio}</p>}

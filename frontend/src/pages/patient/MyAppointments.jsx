@@ -74,7 +74,7 @@ export default function MyAppointments() {
                 {a.cancelledBy === 'No-show' && <p className="mt-3 rounded-xl bg-rose-50 px-3 py-2 text-sm text-rose-700">Marked as missed: you did not join the video call.</p>}
                 {a.status === 'Completed' && a.diagnosis && <p className="mt-3 line-clamp-2 rounded-xl bg-slate-50 px-3 py-2 text-sm text-slate-600"><b>Diagnosis:</b> {a.diagnosis}</p>}
                 {pendingTests > 0 && !a.isInvoiceGenerated && (
-                  <p className="mt-3 flex items-center gap-2 rounded-xl bg-violet-50 px-3 py-2 text-sm text-violet-700"><FlaskConical className="size-4" />{pendingTests} suggested test{pendingTests > 1 ? 's' : ''} need your reply</p>
+                  <p className="mt-3 flex items-center gap-2 rounded-xl bg-blue-50 px-3 py-2 text-sm text-blue-700"><FlaskConical className="size-4" />{pendingTests} suggested test{pendingTests > 1 ? 's' : ''} need your reply</p>
                 )}
                 <div className="mt-auto flex flex-wrap gap-2 pt-4">
                   <JoinCallButton appointment={a} />

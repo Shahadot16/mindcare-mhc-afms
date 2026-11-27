@@ -24,23 +24,23 @@ export default function PatientDashboard() {
 
   return (
     <>
-      <div className="relative mb-8 overflow-hidden rounded-3xl bg-linear-to-br from-brand-600 via-brand-600 to-indigo-600 p-6 text-white shadow-xl shadow-brand-600/20 sm:p-8">
-        <div className="absolute -right-16 -top-16 size-64 rounded-full bg-white/10 blur-2xl" />
+      <div className="relative mb-8 overflow-hidden rounded-3xl bg-brand-700 p-6 text-white shadow-lg shadow-brand-900/10 sm:p-8">
+        <div aria-hidden className="absolute -right-20 -top-24 size-72 rounded-full border-[40px] border-white/5" /><div aria-hidden className="absolute -bottom-28 right-24 size-56 rounded-full bg-brand-600/60" />
         <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm text-white/75">{greeting()},</p>
-            <h1 className="mt-1 text-2xl font-extrabold text-white sm:text-3xl">{user.fullName.split(' ')[0]} 👋</h1>
+            <h1 className="mt-1 text-2xl font-bold text-white sm:text-3xl">{user.fullName.split(' ')[0]}</h1>
             <p className="mt-2 flex max-w-lg items-start gap-2 text-sm text-white/85"><Sparkles className="mt-0.5 size-4 shrink-0" />{tip}</p>
           </div>
           <Link to="/app/doctors"><Button size="lg" variant="secondary" icon={Search} className="border-0">Book an appointment</Button></Link>
         </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard icon={CalendarDays} label="Upcoming visits" value={stats.upcoming} tone="brand" />
-        <StatCard icon={CheckCircle2} label="Completed visits" value={stats.completed} tone="indigo" />
+        <StatCard icon={CheckCircle2} label="Completed visits" value={stats.completed} tone="sky" />
         <StatCard icon={Wallet} label="Unpaid bills" value={money(stats.unpaidAmount)} hint={`${stats.unpaid} invoice${stats.unpaid === 1 ? '' : 's'}`} tone="amber" />
-        <StatCard icon={FlaskConical} label="Tests awaiting reply" value={stats.pendingTests} tone="violet" />
+        <StatCard icon={FlaskConical} label="Tests awaiting reply" value={stats.pendingTests} tone="blue" />
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -84,8 +84,8 @@ function WellbeingCard({ w }) {
     <Card className="overflow-hidden">
       <CardHeader title="Wellbeing" icon={HeartPulse} action={<Link to="/app/assessments" className="text-sm font-semibold text-brand-600">Self-check</Link>} />
       <div className="p-5">
-        <Link to="/app/wellbeing" className="flex items-center gap-4 rounded-2xl bg-linear-to-r from-brand-50 to-indigo-50 p-4 transition hover:from-brand-100/70">
-          <span className="text-4xl">{mood ? mood.emoji : '📝'}</span>
+        <Link to="/app/wellbeing" className="flex items-center gap-4 rounded-2xl bg-brand-50 p-4 ring-1 ring-inset ring-brand-100 transition hover:bg-brand-100/70">
+          <span className="text-4xl">{mood ? mood.emoji : <HeartPulse className="size-9 text-brand-600" aria-hidden />}</span>
           <span className="flex-1">
             <span className="block text-sm font-semibold text-slate-900">{mood ? `Today you feel ${mood.label.toLowerCase()}` : 'How are you feeling today?'}</span>
             <span className="text-xs text-slate-500">{mood ? 'Tap to update your check-in' : 'Log a 1-minute mood check-in'}</span>
@@ -106,7 +106,7 @@ function WellbeingCard({ w }) {
           {[['Depression', w.phq, 27], ['Anxiety', w.gad, 21]].map(([label, a, max]) => (
             <div key={label} className="rounded-xl border border-slate-100 p-3">
               <p className="text-xs text-slate-500">{label}</p>
-              {a ? <p className="font-display text-lg font-extrabold">{a.score}<span className="text-xs font-medium text-slate-400">/{max}</span> <span className="text-xs font-semibold text-slate-500">{a.severity}</span></p>
+              {a ? <p className="font-display text-lg font-bold">{a.score}<span className="text-xs font-medium text-slate-400">/{max}</span> <span className="text-xs font-semibold text-slate-500">{a.severity}</span></p>
                 : <p className="text-xs text-slate-400">Not taken</p>}
             </div>
           ))}

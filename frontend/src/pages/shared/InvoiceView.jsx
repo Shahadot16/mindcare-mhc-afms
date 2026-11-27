@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { ArrowLeft, Printer, CreditCard, HeartPulse, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Printer, CreditCard, CheckCircle2 } from 'lucide-react';
 import useFetch from '@/hooks/useFetch';
 import { useAuth } from '@/context/AuthContext';
 import { Button, Card, ErrorBox, PageLoader, StatusBadge } from '@/components/ui';
@@ -31,11 +31,11 @@ export default function InvoiceView() {
       <Card className="p-6 sm:p-10">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div className="flex items-center gap-3">
-            <span className="grid size-11 place-items-center rounded-xl bg-linear-to-br from-brand-500 to-indigo-500 text-white"><HeartPulse className="size-6" /></span>
-            <div><p className="font-display text-lg font-extrabold">MindCare Clinic</p><p className="text-xs text-slate-500">Mental Health Care AFMS</p></div>
+            <span className="grid size-11 place-items-center rounded-xl bg-brand-600 font-display text-xl font-bold text-white" aria-hidden>M</span>
+            <div><p className="font-display text-lg font-bold">MindCare Clinic</p><p className="text-xs text-slate-500">Mental Health Care AFMS</p></div>
           </div>
           <div className="text-right">
-            <p className="font-display text-2xl font-extrabold">{inv.status === 'Paid' ? 'Receipt' : 'Invoice'}</p>
+            <p className="font-display text-2xl font-bold">{inv.status === 'Paid' ? 'Receipt' : 'Invoice'}</p>
             <p className="font-mono text-sm text-slate-500">{inv.invoiceNo}</p>
             <div className="mt-2"><StatusBadge status={inv.status} /></div>
           </div>
@@ -65,7 +65,7 @@ export default function InvoiceView() {
         </table>
         <div className="ml-auto mt-4 max-w-xs space-y-2 text-sm">
           {inv.discount > 0 && <div className="flex justify-between text-emerald-600"><span>You saved</span><span>{money(inv.discount)}</span></div>}
-          <div className="flex justify-between border-t border-slate-200 pt-3 font-display text-lg font-extrabold"><span>Total</span><span>{money(inv.amount)}</span></div>
+          <div className="flex justify-between border-t border-slate-200 pt-3 font-display text-lg font-bold"><span>Total</span><span>{money(inv.amount)}</span></div>
         </div>
 
         {payment && (

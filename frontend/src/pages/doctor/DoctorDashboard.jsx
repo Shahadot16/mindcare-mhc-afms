@@ -25,18 +25,18 @@ export default function DoctorDashboard() {
       <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm text-slate-500">{greeting()} · {fmtDate(todayStr(), { weekday: 'long', day: 'numeric', month: 'long' })}</p>
-          <h1 className="mt-1 text-2xl font-extrabold sm:text-3xl">{user.fullName}</h1>
+          <h1 className="mt-1 text-2xl font-bold sm:text-3xl">{user.fullName}</h1>
           <p className="text-sm font-medium text-brand-600">{user.specialization}</p>
         </div>
         <Link to="/app/doctor/appointments"><Button icon={Stethoscope}>All my patients</Button></Link>
       </div>
 
       <RiskAlerts />
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard icon={CalendarDays} label="Today's appointments" value={stats.today} tone="brand" />
         <StatCard icon={Clock} label="Approved, to see" value={stats.toSee} tone="sky" />
         <StatCard icon={CheckCircle2} label="Visits completed" value={stats.completed} tone="emerald" />
-        <StatCard icon={Users} label="Unique patients" value={stats.patients} tone="violet" />
+        <StatCard icon={Users} label="Unique patients" value={stats.patients} tone="blue" />
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.5fr_1fr]">

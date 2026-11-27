@@ -25,11 +25,11 @@ export default function AppointmentDetail() {
       </div>
 
       <Card className="overflow-hidden">
-        <div className="flex flex-wrap items-start justify-between gap-4 bg-linear-to-br from-brand-600 to-indigo-600 px-6 py-6 text-white sm:px-8">
+        <div className="flex flex-wrap items-start justify-between gap-4 bg-brand-700 px-6 py-6 text-white sm:px-8">
           <div className="flex items-center gap-3">
             <span className="grid size-11 place-items-center rounded-xl bg-white/15"><HeartPulse className="size-6" /></span>
             <div>
-              <p className="font-display text-lg font-extrabold">MindCare Clinic</p>
+              <p className="font-display text-lg font-bold">MindCare Clinic</p>
               <p className="text-xs text-white/70">{a.status === 'Completed' ? 'Prescription & visit summary' : 'Appointment details'}</p>
             </div>
           </div>
@@ -78,7 +78,7 @@ export default function AppointmentDetail() {
             {a.followUpDate && <Section icon={CalendarClock} title="Follow-up">Please book a follow-up on or around <b>{fmtDate(a.followUpDate)}</b>. Follow-ups within 2 months get 40% off the consultation fee.</Section>}
             {a.tests?.length > 0 && (
               <div>
-                <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-slate-500">Recommended tests</h3>
+                <h3 className="mb-3 text-sm font-semibold text-slate-500">Recommended tests</h3>
                 <TestResponse appointment={a} canRespond={user.role === 'Patient'} onChange={setData} />
                 {user.role === 'Patient' && a.tests.some((t) => t.status === 'Suggested') && !a.isInvoiceGenerated && (
                   <p className="no-print mt-2 text-xs text-slate-500">Accepted tests are added to your bill.</p>
@@ -108,7 +108,7 @@ export default function AppointmentDetail() {
 function Section({ icon: Icon, title, children }) {
   return (
     <div>
-      <h3 className="mb-2 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-slate-500"><Icon className="size-4 text-brand-500" />{title}</h3>
+      <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-500"><Icon className="size-4 text-brand-500" />{title}</h3>
       <div className="whitespace-pre-line text-[15px] leading-relaxed text-slate-700">{children}</div>
     </div>
   );

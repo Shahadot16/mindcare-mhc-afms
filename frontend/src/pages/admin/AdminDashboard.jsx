@@ -25,26 +25,26 @@ export default function AdminDashboard() {
 
   return (
     <>
-      <div className="relative mb-8 overflow-hidden rounded-3xl bg-slate-900 p-6 text-white sm:p-8">
-        <div className="absolute -right-20 -top-24 size-72 rounded-full bg-brand-500/30 blur-3xl" />
-        <div className="absolute -bottom-24 left-1/3 size-60 rounded-full bg-indigo-500/25 blur-3xl" />
+      <div className="relative mb-8 overflow-hidden rounded-3xl bg-ink p-6 text-white sm:p-8">
+        <div aria-hidden className="absolute -right-20 -top-24 size-72 rounded-full border-[40px] border-white/5" />
+        <div aria-hidden className="absolute -bottom-32 left-1/3 size-60 rounded-full bg-brand-700/40" />
         <div className="relative flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-sm text-slate-400">{greeting()} · {fmtDate(todayStr(), { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</p>
-            <h1 className="mt-1 text-2xl font-extrabold text-white sm:text-3xl">Welcome back, {user.fullName.split(' ')[0]}</h1>
+            <h1 className="mt-1 text-2xl font-bold text-white sm:text-3xl">Welcome back, {user.fullName.split(' ')[0]}</h1>
             <p className="mt-1 text-sm text-slate-400">Here's how the clinic is doing today.</p>
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-3">
-            <div><p className="text-xs uppercase tracking-wider text-slate-400">This month</p><p className="font-display text-3xl font-extrabold">{money(stats.monthRevenue)}</p></div>
-            <div><p className="text-xs uppercase tracking-wider text-slate-400">Outstanding</p><p className="font-display text-3xl font-extrabold text-amber-300">{money(stats.outstanding)}</p></div>
+            <div><p className="text-sm text-slate-400">This month</p><p className="font-display text-3xl font-bold">{money(stats.monthRevenue)}</p></div>
+            <div><p className="text-sm text-slate-400">Outstanding</p><p className="font-display text-3xl font-bold text-amber-300">{money(stats.outstanding)}</p></div>
           </div>
         </div>
       </div>
 
       <RiskAlerts />
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard icon={Stethoscope} label="Doctors" value={stats.doctors} tone="brand" />
-        <StatCard icon={Users} label="Staff" value={stats.staff} tone="indigo" />
+        <StatCard icon={Users} label="Staff" value={stats.staff} tone="sky" />
         <StatCard icon={UserRound} label="Patients" value={stats.patients} tone="sky" />
         <StatCard icon={CalendarDays} label="Appointments today" value={stats.todayCount} hint={`${stats.pending} pending approval`} tone="amber" />
       </div>

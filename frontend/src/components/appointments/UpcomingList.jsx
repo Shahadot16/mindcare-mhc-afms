@@ -19,7 +19,7 @@ export default function UpcomingList({ items = [], show = 'doctor', emptyAction 
             <Link to={`/app/appointments/${a._id}`} className="flex items-center gap-4 px-5 py-3.5 transition hover:bg-slate-50">
               <div className="w-12 shrink-0 rounded-xl bg-brand-50 py-1.5 text-center">
                 <p className="text-[10px] font-bold uppercase text-brand-600">{d.toLocaleDateString('en-GB', { month: 'short' })}</p>
-                <p className="font-display text-lg font-extrabold leading-none text-brand-700">{d.getDate()}</p>
+                <p className="font-display text-lg font-bold leading-none text-brand-700">{d.getDate()}</p>
               </div>
               <Avatar name={person?.fullName} size="sm" className="hidden sm:grid" />
               <div className="min-w-0 flex-1">

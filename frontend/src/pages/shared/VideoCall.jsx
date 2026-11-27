@@ -336,8 +336,8 @@ export default function VideoCallPage() {
     return (
       <CallShell onBack={() => navigate(isDoctor ? '/app/doctor/appointments' : '/app/my-appointments')} title="Video consultation">
         <Card className="mx-auto max-w-lg p-8 text-center">
-          <span className="mx-auto grid size-14 place-items-center rounded-2xl bg-violet-50 text-violet-600"><PhoneOff className="size-7" /></span>
-          <h2 className="mt-4 text-xl font-extrabold">Call ended</h2>
+          <span className="mx-auto grid size-14 place-items-center rounded-2xl bg-blue-50 text-blue-600"><PhoneOff className="size-7" /></span>
+          <h2 className="mt-4 text-xl font-bold">Call ended</h2>
           <p className="mt-1 text-sm text-slate-500">
             {ended?.by === 'Time limit' ? 'The time for this appointment ran out.' : ended?.by === 'No-show' ? 'This appointment was marked as missed.' : ended?.by === 'Cancelled' ? 'This appointment was cancelled.' : `${isDoctor ? 'You' : a.doctor.fullName} ended the call.`}
             {minutes > 0 && ` Duration: ${minutes} min.`}
@@ -380,10 +380,10 @@ export default function VideoCallPage() {
               <div><p className="text-xs text-slate-500">{isDoctor ? 'Patient' : 'Doctor'}</p><p className="font-bold">{other.fullName}</p><p className="text-sm text-slate-500">{isDoctor ? [other.age && `${other.age} yrs`, other.gender].filter(Boolean).join(' · ') : other.specialization}</p></div>
             </div>
             <ul className="mt-5 space-y-2 text-sm text-slate-600">
-              <li className="flex gap-2"><Clock className="mt-0.5 size-4 shrink-0 text-violet-500" />{fmtTime(a.startTime)}–{fmtTime(a.endTime)} · opens {clock(t.opensAt)}, closes {clock(t.closesAt)}</li>
+              <li className="flex gap-2"><Clock className="mt-0.5 size-4 shrink-0 text-blue-500" />{fmtTime(a.startTime)}–{fmtTime(a.endTime)} · opens {clock(t.opensAt)}, closes {clock(t.closesAt)}</li>
               {isDoctor
-                ? <li className="flex gap-2"><UserCheck className="mt-0.5 size-4 shrink-0 text-violet-500" />You can admit the patient from {clock(t.canAdmitAt)} (5 minutes early).</li>
-                : <li className="flex gap-2"><UserCheck className="mt-0.5 size-4 shrink-0 text-violet-500" />Sit somewhere quiet and private. The doctor will let you in from the waiting room.</li>}
+                ? <li className="flex gap-2"><UserCheck className="mt-0.5 size-4 shrink-0 text-blue-500" />You can admit the patient from {clock(t.canAdmitAt)} (5 minutes early).</li>
+                : <li className="flex gap-2"><UserCheck className="mt-0.5 size-4 shrink-0 text-blue-500" />Sit somewhere quiet and private. The doctor will let you in from the waiting room.</li>}
             </ul>
             <div className="mt-auto pt-6">
               {canJoinNow
@@ -437,7 +437,7 @@ export default function VideoCallPage() {
               </div>
             </>) : (<>
               <div className="flex items-center gap-3">
-                <span className="relative grid size-12 place-items-center rounded-2xl bg-violet-50 text-violet-600"><Hourglass className="size-6" /><span className="absolute -right-1 -top-1 size-3 animate-ping rounded-full bg-violet-400" /></span>
+                <span className="relative grid size-12 place-items-center rounded-2xl bg-blue-50 text-blue-600"><Hourglass className="size-6" /><span className="absolute -right-1 -top-1 size-3 animate-ping rounded-full bg-blue-400" /></span>
                 <div><p className="font-bold">Waiting for {a.doctor.fullName}</p><p className="text-sm text-slate-500">The doctor will let you in shortly. Please keep this page open.</p></div>
               </div>
               <p className="mt-5 text-sm text-slate-600">
@@ -539,7 +539,7 @@ function CallShell({ title, subtitle, onBack, children }) {
     <div className="mx-auto max-w-5xl">
       <div className="mb-5 flex items-center gap-3">
         <Button variant="ghost" icon={ArrowLeft} onClick={onBack}>Back</Button>
-        <div className="min-w-0"><h1 className="truncate text-xl font-extrabold">{title}</h1>{subtitle && <p className="truncate text-sm text-slate-500">{subtitle}</p>}</div>
+        <div className="min-w-0"><h1 className="truncate text-xl font-bold">{title}</h1>{subtitle && <p className="truncate text-sm text-slate-500">{subtitle}</p>}</div>
       </div>
       {children}
     </div>

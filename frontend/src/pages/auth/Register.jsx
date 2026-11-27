@@ -48,6 +48,7 @@ export default function Register() {
           <Input label="Phone" value={form.contactNumber} onChange={set('contactNumber')} placeholder="01XXXXXXXXX" />
         </div>
         <Textarea label="Address" rows={2} value={form.address} onChange={set('address')} placeholder="Area, City" />
+        <p className="text-sm text-slate-500">By creating an account you agree to our <Link to="/terms" className="font-semibold text-brand-700 hover:underline">terms</Link> and <Link to="/privacy" className="font-semibold text-brand-700 hover:underline">privacy policy</Link>.</p>
         <Button type="submit" size="lg" className="w-full" loading={loading} icon={UserPlus}>Create account</Button>
       </form>
       <p className="mt-6 text-center text-sm text-slate-500">

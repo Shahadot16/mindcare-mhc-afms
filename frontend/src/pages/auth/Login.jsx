@@ -69,11 +69,11 @@ export default function Login() {
       </p>
 
       <div className="mt-8 rounded-2xl border border-dashed border-slate-200 bg-slate-50/70 p-4">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-slate-500">Demo accounts: click to fill</p>
+        <p className="mb-3 text-sm font-semibold text-slate-600">Demo accounts: tap one to fill the form</p>
         <div className="grid grid-cols-2 gap-2">
           {demo.map(({ role, email, password, icon: Icon }) => (
             <button key={role} type="button" onClick={() => setForm({ email, password })}
-              className={cx('flex items-center gap-2 rounded-xl border bg-white px-3 py-2 text-left text-sm transition cursor-pointer hover:border-brand-300 hover:shadow-sm',
+              className={cx('flex min-h-11 items-center gap-2 rounded-xl border bg-white px-3 py-2 text-left text-sm transition hover:-translate-y-px hover:border-brand-300 hover:shadow-sm',
                 form.email === email ? 'border-brand-400 ring-2 ring-brand-100' : 'border-slate-200')}>
               <Icon className="size-4 text-brand-600" />
               <span className="font-semibold text-slate-700">{role}</span>

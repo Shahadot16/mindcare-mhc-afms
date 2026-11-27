@@ -8,9 +8,9 @@ import { Button, Card, CardHeader, ErrorBox, Input, PageLoader, cx } from '@/com
 import { fmtDate, money } from '@/utils/format';
 
 const wallets = [
-  { id: 'bKash', color: '#e2136e', bg: 'bg-pink-50', ring: 'ring-pink-300' },
+  { id: 'bKash', color: '#e2136e', bg: 'bg-rose-50', ring: 'ring-rose-300' },
   { id: 'Nagad', color: '#ec1c24', bg: 'bg-orange-50', ring: 'ring-orange-300' },
-  { id: 'Rocket', color: '#8c3494', bg: 'bg-purple-50', ring: 'ring-purple-300' },
+  { id: 'Rocket', color: '#8c3494', bg: 'bg-blue-50', ring: 'ring-blue-300' },
 ];
 
 const formatCard = (v) => v.replace(/\D/g, '').slice(0, 16).replace(/(.{4})/g, '$1 ').trim();
@@ -59,10 +59,10 @@ export default function PayBill() {
   if (done) {
     return (
       <Card className="mx-auto max-w-md overflow-hidden text-center">
-        <div className="bg-linear-to-br from-emerald-500 to-brand-600 px-8 py-10 text-white">
+        <div className="bg-brand-700 px-8 py-10 text-white">
           <span className="mx-auto grid size-16 place-items-center rounded-full bg-white/20 animate-pop"><CheckCircle2 className="size-9" /></span>
-          <h2 className="mt-4 text-2xl font-extrabold text-white">Payment successful</h2>
-          <p className="mt-1 font-display text-3xl font-extrabold">{money(done.amount)}</p>
+          <h2 className="mt-4 text-2xl font-bold text-white">Payment successful</h2>
+          <p className="mt-1 font-display text-3xl font-bold">{money(done.amount)}</p>
         </div>
         <dl className="space-y-3 p-6 text-left text-sm">
           <div className="flex justify-between"><dt className="text-slate-500">Method</dt><dd className="font-semibold">{done.method}</dd></div>
@@ -118,7 +118,7 @@ export default function PayBill() {
                 <div className="grid grid-cols-3 gap-3">
                   {wallets.map((w) => (
                     <button key={w.id} type="button" onClick={() => setWallet(w.id)}
-                      className={cx('rounded-2xl border-2 py-4 font-display text-lg font-extrabold transition cursor-pointer',
+                      className={cx('rounded-2xl border-2 py-4 font-display text-lg font-bold transition cursor-pointer',
                         wallet === w.id ? `${w.bg} border-transparent ring-2 ${w.ring}` : 'border-slate-200 bg-white hover:border-slate-300')}
                       style={{ color: w.color }}>
                       {w.id}
@@ -153,7 +153,7 @@ export default function PayBill() {
                 </li>
               ))}
             </ul>
-            <div className="mt-4 flex justify-between border-t border-slate-100 pt-4 font-display text-xl font-extrabold"><span>Total</span><span>{money(inv.amount)}</span></div>
+            <div className="mt-4 flex justify-between border-t border-slate-100 pt-4 font-display text-xl font-bold"><span>Total</span><span>{money(inv.amount)}</span></div>
           </div>
         </Card>
       </div>

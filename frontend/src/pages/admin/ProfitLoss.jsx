@@ -6,8 +6,8 @@ import { Badge, Button, Card, CardHeader, ErrorBox, PageHeader, PageLoader, Stat
 import { downloadCSV } from '@/utils/csv';
 import { money } from '@/utils/format';
 
-const C_REV = '#0a8577';
-const C_COST = '#6366f1';
+const C_REV = '#0d7480';
+const C_COST = '#c2703d'; // warm clay for costs
 const short = (m) => new Date(`${m}-01T00:00:00`).toLocaleDateString('en-GB', { month: 'short', year: '2-digit' });
 const long = (m) => new Date(`${m}-01T00:00:00`).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
 const k = (v) => (Math.abs(v) >= 1000 ? `৳${Math.round(v / 1000)}k` : `৳${v}`);
@@ -33,10 +33,10 @@ export default function ProfitLoss() {
         const margin = totals.revenue ? Math.round((totals.profit / totals.revenue) * 1000) / 10 : 0;
         return (
           <div className="space-y-6">
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
               <StatCard icon={Wallet} label="Revenue" value={money(totals.revenue)} tone="brand" />
               <StatCard icon={PiggyBank} label="Expenses" value={money(totals.expenses)} tone="rose" />
-              <StatCard icon={Banknote} label="Payroll" value={money(totals.payroll)} tone="indigo" />
+              <StatCard icon={Banknote} label="Payroll" value={money(totals.payroll)} tone="sky" />
               <StatCard icon={totals.profit >= 0 ? TrendingUp : TrendingDown} label="Net profit" value={money(totals.profit)} hint={`${margin}% margin`} tone={totals.profit >= 0 ? 'emerald' : 'rose'} />
             </div>
 

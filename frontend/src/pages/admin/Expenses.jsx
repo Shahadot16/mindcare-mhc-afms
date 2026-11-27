@@ -104,7 +104,7 @@ export default function Expenses() {
                 {data.byCategory.map((c) => (
                   <div key={c.category}>
                     <div className="mb-1.5 flex justify-between"><span className="font-medium">{c.category}</span><b className="tabular-nums">{money(c.total)}</b></div>
-                    <div className="h-2 rounded-full bg-slate-100"><div className="h-full rounded-full bg-indigo-500" style={{ width: `${(c.total / data.byCategory[0].total) * 100}%` }} /></div>
+                    <div className="h-2 rounded-full bg-slate-100"><div className="h-full rounded-full bg-sky-500" style={{ width: `${(c.total / data.byCategory[0].total) * 100}%` }} /></div>
                   </div>
                 ))}
               </div>

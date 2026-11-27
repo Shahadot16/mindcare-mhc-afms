@@ -91,11 +91,11 @@ export default function BookAppointment() {
           <Card className="flex flex-wrap items-center gap-4 p-5">
             <Avatar name={doctor.fullName} size="lg" />
             <div className="min-w-0 flex-1">
-              <h1 className="text-xl font-extrabold">{doctor.fullName}</h1>
+              <h1 className="text-xl font-bold">{doctor.fullName}</h1>
               <p className="text-sm font-medium text-brand-600">{doctor.specialization}</p>
               <p className="mt-1 text-sm text-slate-500">{workDays.map((d) => d.slice(0, 3)).join(', ')} · {fmtHour(doctor.schedule?.startHour)}–{fmtHour(doctor.schedule?.endHour)}</p>
             </div>
-            <div className="text-right"><p className="text-xs text-slate-500">Consultation</p><p className="font-display text-xl font-extrabold">{money(doctor.consultationFee)}</p></div>
+            <div className="text-right"><p className="text-xs text-slate-500">Consultation</p><p className="font-display text-xl font-bold">{money(doctor.consultationFee)}</p></div>
           </Card>
 
           <Card>
@@ -107,8 +107,8 @@ export default function BookAppointment() {
               ].map((m) => (
                 <button key={m.value} type="button" onClick={() => { setMode(m.value); setSlot(null); }}
                   className={cx('flex items-start gap-3 rounded-2xl border p-4 text-left transition cursor-pointer',
-                    mode === m.value ? (m.value === 'Video' ? 'border-violet-500 bg-violet-50 ring-2 ring-violet-200' : 'border-brand-500 bg-brand-50 ring-2 ring-brand-200') : 'border-slate-200 bg-white hover:border-slate-300')}>
-                  <span className={cx('grid size-10 shrink-0 place-items-center rounded-xl', m.value === 'Video' ? 'bg-violet-100 text-violet-700' : 'bg-brand-100 text-brand-700')}><m.icon className="size-5" /></span>
+                    mode === m.value ? (m.value === 'Video' ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-200' : 'border-brand-500 bg-brand-50 ring-2 ring-brand-200') : 'border-slate-200 bg-white hover:border-slate-300')}>
+                  <span className={cx('grid size-10 shrink-0 place-items-center rounded-xl', m.value === 'Video' ? 'bg-blue-100 text-blue-700' : 'bg-brand-100 text-brand-700')}><m.icon className="size-5" /></span>
                   <span><span className="block font-semibold">{m.title}</span><span className="text-xs text-slate-500">{m.text}</span></span>
                 </button>
               ))}
@@ -127,7 +127,7 @@ export default function BookAppointment() {
                       active ? 'border-brand-500 bg-brand-600 text-white shadow-lg shadow-brand-600/25'
                         : works ? 'border-slate-200 bg-white hover:border-brand-300 hover:bg-brand-50 cursor-pointer' : 'cursor-not-allowed border-transparent bg-slate-50 text-slate-300')}>
                     <span className={cx('text-[11px] font-semibold uppercase', active ? 'text-white/80' : works ? 'text-slate-500' : '')}>{x.d.toLocaleDateString('en-GB', { weekday: 'short' })}</span>
-                    <span className="font-display text-xl font-extrabold">{x.d.getDate()}</span>
+                    <span className="font-display text-xl font-bold">{x.d.getDate()}</span>
                     <span className={cx('text-[10px]', active ? 'text-white/80' : 'text-slate-400')}>{x.d.toLocaleDateString('en-GB', { month: 'short' })}</span>
                   </button>
                 );
@@ -184,7 +184,7 @@ export default function BookAppointment() {
               <Button size="lg" className="w-full" disabled={!slot} loading={booking} onClick={book} icon={CheckCircle2}>Request appointment</Button>
               <p className="text-center text-xs text-slate-500">Staff will approve your request. Pay after the visit.</p>
               {mode === 'Video' && (
-                <p className="rounded-xl bg-violet-50 px-3 py-2 text-xs text-violet-800">
+                <p className="rounded-xl bg-blue-50 px-3 py-2 text-xs text-blue-800">
                   You can join the call <b>10 minutes before</b> the start time. Please use a quiet, private place with good internet, and allow camera and microphone access.
                 </p>
               )}

@@ -1,16 +1,21 @@
-import { HeartPulse } from 'lucide-react';
 import { cx } from '@/components/ui';
 
-export default function Logo({ light, className }) {
+/** MindCare mark: the initial on a flat teal tile, then the name. */
+export default function Logo({ light, compact, className }) {
   return (
-    <span className={cx('flex items-center gap-2.5', className)}>
-      <span className="grid size-9 place-items-center rounded-xl bg-linear-to-br from-brand-400 to-indigo-500 text-white shadow-lg shadow-brand-500/25">
-        <HeartPulse className="size-5" />
+    <span className={cx('flex items-center gap-2.5 whitespace-nowrap', className)}>
+      <span aria-hidden className={cx(
+        'grid size-9 place-items-center rounded-[11px] font-display text-[19px] font-bold leading-none',
+        light ? 'bg-brand-400 text-ink' : 'bg-brand-600 text-white'
+      )}>
+        M
       </span>
-      <span className="leading-tight">
-        <span className={cx('block font-display text-[17px] font-extrabold', light ? 'text-white' : 'text-slate-900')}>MindCare</span>
-        <span className={cx('block text-[10px] font-semibold uppercase tracking-[0.14em]', light ? 'text-brand-200' : 'text-brand-600')}>MHC · AFMS</span>
-      </span>
+      {!compact && (
+        <span className="leading-tight">
+          <span className={cx('block font-display text-[18px] font-bold tracking-tight', light ? 'text-white' : 'text-ink')}>MindCare</span>
+          <span className={cx('block text-[11px] font-medium', light ? 'text-slate-400' : 'text-slate-500')}>Mental health clinic</span>
+        </span>
+      )}
     </span>
   );
 }

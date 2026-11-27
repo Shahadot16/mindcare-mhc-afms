@@ -7,7 +7,7 @@ const tone = (action) => {
   if (/delete|cancel|status|leave/.test(action)) return 'rose';
   if (/payment|payroll|invoice|expense/.test(action)) return 'emerald';
   if (/create|approve|complete/.test(action)) return 'brand';
-  if (/view|review/.test(action)) return 'violet';
+  if (/view|review/.test(action)) return 'blue';
   return 'slate';
 };
 

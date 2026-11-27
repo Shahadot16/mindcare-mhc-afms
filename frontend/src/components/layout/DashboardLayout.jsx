@@ -75,24 +75,24 @@ function Sidebar({ onNavigate }) {
   const navigate = useNavigate();
 
   return (
-    <div className="flex h-full flex-col bg-slate-900 text-slate-300">
+    <div className="flex h-full flex-col bg-ink text-slate-300">
       <div className="px-5 pb-5 pt-6"><Link to="/" onClick={onNavigate}><Logo light /></Link></div>
 
-      <nav className="flex-1 space-y-5 overflow-y-auto px-3 pb-4">
+      <nav className="no-scrollbar flex-1 space-y-5 overflow-y-auto px-3 pb-4">
         {(NAV[user.role] || []).map(([section, items]) => (
           <div key={section}>
-            <p className="px-3 pb-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-500">{section}</p>
+            <p className="px-3 pb-1.5 text-xs font-medium text-slate-500">{section}</p>
             <div className="space-y-0.5">
               {items.map(({ to, label, icon: Icon, end, badge }) => (
                 <NavLink key={to} to={to} end={end} onClick={onNavigate}
                   className={({ isActive }) => cx(
-                    'group flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition',
-                    isActive ? 'bg-linear-to-r from-brand-500/20 to-brand-500/5 text-white ring-1 ring-inset ring-brand-400/20' : 'hover:bg-white/5 hover:text-white'
+                    'group relative flex min-h-10 items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition',
+                    isActive ? 'bg-white/10 text-white before:absolute before:inset-y-2 before:-left-3 before:w-1 before:rounded-r-full before:bg-brand-400' : 'text-slate-300 hover:bg-white/5 hover:text-white'
                   )}>
                   {({ isActive }) => (<>
                     <Icon className={cx('size-4.5', isActive ? 'text-brand-300' : 'text-slate-500 group-hover:text-slate-300')} />
                     <span className="flex-1">{label}</span>
-                    {badge === 'msg' && msgUnread > 0 && <span className="rounded-full bg-brand-500 px-1.5 text-[11px] font-bold text-white">{msgUnread}</span>}
+                    {badge === 'msg' && msgUnread > 0 && <span className="rounded-full bg-brand-400 px-1.5 text-[11px] font-bold text-ink">{msgUnread}</span>}
                   </>)}
                 </NavLink>
               ))}
@@ -100,24 +100,24 @@ function Sidebar({ onNavigate }) {
           </div>
         ))}
         <div>
-          <p className="px-3 pb-1.5 text-[11px] font-semibold uppercase tracking-wider text-slate-500">Account</p>
+          <p className="px-3 pb-1.5 text-xs font-medium text-slate-500">Account</p>
           <NavLink to="/app/profile" onClick={onNavigate}
-            className={({ isActive }) => cx('flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition',
+            className={({ isActive }) => cx('flex min-h-10 items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition',
               isActive ? 'bg-white/10 text-white' : 'hover:bg-white/5 hover:text-white')}>
             <UserCircle className="size-4.5 text-slate-500" /> Profile
           </NavLink>
         </div>
       </nav>
 
-      <div className="m-3 rounded-2xl bg-white/5 p-3">
+      <div className="m-3 rounded-2xl bg-white/5 p-3 ring-1 ring-inset ring-white/5">
         <div className="flex items-center gap-3">
           <Avatar name={user.fullName} size="sm" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold text-white">{user.fullName}</p>
             <p className="truncate text-xs text-slate-400">{roleLabel[user.role]}</p>
           </div>
-          <button title="Log out" onClick={() => { logout(); navigate('/login'); }}
-            className="grid size-8 place-items-center rounded-lg text-slate-400 transition hover:bg-white/10 hover:text-white cursor-pointer">
+          <button title="Log out" aria-label="Log out" onClick={() => { logout(); navigate('/login'); }}
+            className="grid size-10 place-items-center rounded-lg text-slate-400 transition hover:bg-white/10 hover:text-white cursor-pointer">
             <LogOut className="size-4" />
           </button>
         </div>
@@ -131,24 +131,24 @@ function TopBar({ onMenu }) {
   const { msgUnread, connected } = useRealtime();
   const canChat = ['Doctor', 'Patient'].includes(user.role);
   return (
-    <header className="no-print sticky top-0 z-30 flex h-16 items-center gap-2 border-b border-slate-200/70 bg-white/80 px-4 backdrop-blur-md sm:px-6 lg:px-8">
-      <button onClick={onMenu} className="grid size-10 place-items-center rounded-xl text-slate-600 hover:bg-slate-100 lg:hidden" aria-label="Open menu">
+    <header className="no-print sticky top-0 z-30 flex h-16 items-center gap-2 border-b border-slate-200/80 bg-white/85 px-4 backdrop-blur-md sm:px-6 lg:px-8">
+      <button onClick={onMenu} className="grid size-11 place-items-center rounded-xl text-slate-600 hover:bg-slate-100 lg:hidden" aria-label="Open menu" aria-expanded="false">
         <Menu className="size-5" />
       </button>
       <span className="lg:hidden"><Logo /></span>
       <span className="ml-auto hidden items-center gap-1.5 text-xs text-slate-400 sm:flex" title={connected ? 'Live updates on' : 'Reconnecting…'}>
-        <span className={cx('size-2 rounded-full', connected ? 'bg-emerald-500' : 'bg-amber-400 animate-pulse')} />
+        <span className="relative grid size-2 place-items-center">{connected && <span className="absolute inset-0 rounded-full bg-emerald-400 animate-breathe" />}<span className={cx('relative size-2 rounded-full', connected ? 'bg-emerald-500' : 'bg-amber-400 animate-pulse')} /></span>
         {connected ? 'Live' : 'Offline'}
       </span>
       <div className="ml-auto flex items-center gap-1 sm:ml-3">
         {canChat && (
-          <Link to="/app/messages" aria-label="Messages" className="relative grid size-10 place-items-center rounded-xl text-slate-600 transition hover:bg-slate-100">
+          <Link to="/app/messages" aria-label="Messages" className="relative grid size-11 place-items-center rounded-xl text-slate-600 transition hover:bg-slate-100">
             <MessageCircle className="size-5" />
             {msgUnread > 0 && <span className="absolute right-1.5 top-1.5 size-2.5 rounded-full bg-brand-500 ring-2 ring-white" />}
           </Link>
         )}
         <NotificationBell />
-        <Link to="/app/profile" className="ml-1 hidden sm:block" aria-label="Profile"><Avatar name={user.fullName} size="sm" /></Link>
+        <Link to="/app/profile" className="ml-1 hidden rounded-full transition hover:ring-4 hover:ring-brand-100 sm:block" aria-label="Profile"><Avatar name={user.fullName} size="sm" /></Link>
       </div>
     </header>
   );
@@ -161,13 +161,14 @@ export default function DashboardLayout() {
 
   return (
     <div className="min-h-screen lg:pl-64">
+      <a href="#main" className="sr-only z-[60] rounded-xl bg-ink px-4 py-3 text-sm font-semibold text-white focus:not-sr-only focus:fixed focus:left-4 focus:top-4">Skip to content</a>
       <aside className="no-print fixed inset-y-0 left-0 z-40 hidden w-64 lg:block"><Sidebar /></aside>
 
       {open && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm" onClick={() => setOpen(false)} />
+          <div className="absolute inset-0 bg-slate-950/50 backdrop-blur-sm" onClick={() => setOpen(false)} />
           <aside className="relative h-full w-72 max-w-[85vw] animate-fade-up">
-            <button onClick={() => setOpen(false)} className="absolute right-3 top-6 z-10 grid size-9 place-items-center rounded-lg text-slate-400 hover:bg-white/10" aria-label="Close menu">
+            <button onClick={() => setOpen(false)} className="absolute right-3 top-5 z-10 grid size-11 place-items-center rounded-lg text-slate-400 hover:bg-white/10" aria-label="Close menu">
               <X className="size-5" />
             </button>
             <Sidebar onNavigate={() => setOpen(false)} />
@@ -177,7 +178,7 @@ export default function DashboardLayout() {
 
       <TopBar onMenu={() => setOpen(true)} />
 
-      <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
+      <main id="main" tabIndex={-1} className="mx-auto max-w-7xl px-4 py-6 outline-none sm:px-6 lg:px-8 lg:py-10">
         <Suspense fallback={<PageLoader />}>
           <div key={pathname} className="animate-fade-up"><Outlet /></div>
         </Suspense>

@@ -7,7 +7,7 @@ const BANDS = {
   GAD7: [[0, 5], [5, 10], [10, 15], [15, 21]],
 };
 const TINTS = ['#ffffff', '#fff7ed', '#ffedd5', '#fed7aa', '#fdba74'];
-const C_LINE = '#4f46e5';
+const C_LINE = '#0d7480';
 
 /** Score history for one questionnaire, with severity bands. */
 export default function ScoreChart({ type, items, height = 220 }) {

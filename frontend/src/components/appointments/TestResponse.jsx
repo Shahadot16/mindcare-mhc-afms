@@ -24,7 +24,7 @@ export default function TestResponse({ appointment, canRespond, onChange }) {
     <ul className="divide-y divide-slate-100 rounded-2xl border border-slate-200">
       {appointment.tests.map((t) => (
         <li key={t._id} className="flex flex-wrap items-center gap-3 px-4 py-3">
-          <span className="grid size-9 place-items-center rounded-xl bg-violet-50 text-violet-600"><FlaskConical className="size-4" /></span>
+          <span className="grid size-9 place-items-center rounded-xl bg-blue-50 text-blue-600"><FlaskConical className="size-4" /></span>
           <div className="min-w-0 flex-1">
             <p className="text-sm font-semibold">{t.testName}</p>
             <p className="text-xs text-slate-500">{money(t.price)}{t.result ? ` · Result: ${t.result}` : ''}</p>

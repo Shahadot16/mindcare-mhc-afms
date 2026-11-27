@@ -15,22 +15,22 @@ export default function StaffDashboard() {
 
   const tasks = [
     { to: '/app/appointments', icon: Hourglass, label: 'Appointments to approve', count: stats.pending, tone: 'amber' },
-    { to: '/app/lab-tests', icon: TestTubes, label: 'Lab tests to run', count: stats.labPending, tone: 'violet' },
+    { to: '/app/lab-tests', icon: TestTubes, label: 'Lab tests to run', count: stats.labPending, tone: 'blue' },
     { to: '/app/billing', icon: Receipt, label: 'Visits waiting for an invoice', count: stats.unbilled, tone: 'brand' },
   ];
-  const tones = { amber: 'bg-amber-50 text-amber-600', violet: 'bg-violet-50 text-violet-600', brand: 'bg-brand-50 text-brand-600' };
+  const tones = { amber: 'bg-amber-50 text-amber-600', blue: 'bg-blue-50 text-blue-700', brand: 'bg-brand-50 text-brand-600' };
 
   return (
     <>
       <div className="mb-8">
         <p className="text-sm text-slate-500">{greeting()} · {fmtDate(todayStr(), { weekday: 'long', day: 'numeric', month: 'long' })}</p>
-        <h1 className="mt-1 text-2xl font-extrabold sm:text-3xl">Front desk, {user.fullName.split(' ')[0]}</h1>
+        <h1 className="mt-1 text-2xl font-bold sm:text-3xl">Front desk, {user.fullName.split(' ')[0]}</h1>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
         <StatCard icon={Hourglass} label="Pending approval" value={stats.pending} tone="amber" />
         <StatCard icon={CalendarDays} label="Appointments today" value={stats.todayCount} tone="brand" />
-        <StatCard icon={TestTubes} label="Lab queue" value={stats.labPending} tone="violet" />
+        <StatCard icon={TestTubes} label="Lab queue" value={stats.labPending} tone="blue" />
         <StatCard icon={Wallet} label="Unpaid invoices" value={stats.unpaidInvoices} tone="rose" />
       </div>
 
@@ -43,7 +43,7 @@ export default function StaffDashboard() {
                 <Link to={to} className="group flex items-center gap-4 rounded-2xl border border-slate-100 p-4 transition hover:border-slate-200 hover:bg-slate-50">
                   <span className={cx('grid size-11 place-items-center rounded-xl', tones[tone])}><Icon className="size-5" /></span>
                   <span className="flex-1 text-sm font-semibold">{label}</span>
-                  <span className={cx('font-display text-2xl font-extrabold', count ? 'text-slate-900' : 'text-slate-300')}>{count}</span>
+                  <span className={cx('font-display text-2xl font-bold', count ? 'text-slate-900' : 'text-slate-300')}>{count}</span>
                   <ArrowRight className="size-4 text-slate-400 transition group-hover:translate-x-0.5" />
                 </Link>
               </li>

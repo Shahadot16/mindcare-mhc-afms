@@ -43,7 +43,7 @@ export default function Profile() {
       <PageHeader title="Profile settings" subtitle="Manage your personal information and password" />
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
         <Card className="h-fit overflow-hidden">
-          <div className="h-24 bg-linear-to-br from-brand-500 to-indigo-500" />
+          <div className="h-24 bg-brand-700" />
           <div className="-mt-10 px-6 pb-6 text-center">
             <Avatar name={user.fullName} size="xl" className="mx-auto ring-4 ring-white" />
             <h2 className="mt-3 text-lg font-bold">{user.fullName}</h2>

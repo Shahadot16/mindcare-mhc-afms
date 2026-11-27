@@ -15,7 +15,7 @@ export const callWindow = (a) => {
 /** "Video" or "In-person" pill. */
 export function ModeBadge({ mode }) {
   return mode === 'Video'
-    ? <Badge tone="violet"><Video className="size-3" />Video</Badge>
+    ? <Badge tone="blue"><Video className="size-3" />Video</Badge>
     : <Badge tone="slate"><Building2 className="size-3" />In-person</Badge>;
 }
 

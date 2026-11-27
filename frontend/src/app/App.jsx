@@ -2,7 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import ProtectedRoute from '@/components/routing/ProtectedRoute';
 import DashboardLayout from '@/components/layout/DashboardLayout';
-import { PageLoader } from '@/components/ui';
+import { Spinner } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
 
 // Every page is its own chunk, so the first load stays small
@@ -13,6 +13,13 @@ const ForgotPassword = lazy(() => import('@/pages/auth/ForgotPassword'));
 const ResetPassword = lazy(() => import('@/pages/auth/ResetPassword'));
 const Profile = lazy(() => import('@/pages/shared/Profile'));
 const NotFound = lazy(() => import('@/pages/public/NotFound'));
+const About = lazy(() => import('@/pages/public/About'));
+const Services = lazy(() => import('@/pages/public/Services'));
+const Faq = lazy(() => import('@/pages/public/Faq'));
+const Contact = lazy(() => import('@/pages/public/Contact'));
+const Privacy = lazy(() => import('@/pages/public/Privacy'));
+const Terms = lazy(() => import('@/pages/public/Terms'));
+const GetHelp = lazy(() => import('@/pages/public/GetHelp'));
 const AppointmentDetail = lazy(() => import('@/pages/shared/AppointmentDetail'));
 const InvoiceView = lazy(() => import('@/pages/shared/InvoiceView'));
 const Messages = lazy(() => import('@/pages/shared/Messages'));
@@ -62,9 +69,16 @@ function GuestOnly({ children }) {
 
 export default function App() {
   return (
-    <Suspense fallback={<PageLoader />}>
+    <Suspense fallback={<div className="grid min-h-screen place-items-center"><Spinner className="size-8" /></div>}>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/get-help" element={<GetHelp />} />
         <Route path="/login" element={<GuestOnly><Login /></GuestOnly>} />
         <Route path="/register" element={<GuestOnly><Register /></GuestOnly>} />
         <Route path="/forgot-password" element={<GuestOnly><ForgotPassword /></GuestOnly>} />

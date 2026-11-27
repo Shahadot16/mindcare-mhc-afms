@@ -9,13 +9,13 @@ import { cx } from '@/components/ui';
 const ICONS = {
   appointment: [CalendarCheck, 'bg-sky-50 text-sky-600'],
   visit: [Stethoscope, 'bg-brand-50 text-brand-600'],
-  test: [FlaskConical, 'bg-violet-50 text-violet-600'],
+  test: [FlaskConical, 'bg-blue-50 text-blue-600'],
   billing: [Receipt, 'bg-amber-50 text-amber-600'],
   payment: [Wallet, 'bg-emerald-50 text-emerald-600'],
   risk: [AlertTriangle, 'bg-rose-100 text-rose-600'],
-  message: [MessageCircle, 'bg-indigo-50 text-indigo-600'],
+  message: [MessageCircle, 'bg-sky-50 text-sky-600'],
   reminder: [AlarmClock, 'bg-orange-50 text-orange-600'],
-  call: [Video, 'bg-violet-50 text-violet-600'],
+  call: [Video, 'bg-blue-50 text-blue-600'],
   system: [Info, 'bg-slate-100 text-slate-600'],
 };
 
